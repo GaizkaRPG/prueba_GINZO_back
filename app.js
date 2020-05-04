@@ -4,10 +4,19 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+//Routes
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var usersRouter = require('./routes/user.routes');
 
 var app = express();
+
+//DB
+var { mongoose } = require('./database');
+
+//abrimos el servidor en el puerto 4200
+app.listen(4200, () => {
+  console.log('Servidor abierto puerto 4200')
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
