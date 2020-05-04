@@ -13,9 +13,9 @@ var app = express();
 //DB
 var { mongoose } = require('./database');
 
-//abrimos el servidor en el puerto 4200
-app.listen(4200, () => {
-  console.log('Servidor abierto puerto 4200')
+//abrimos el servidor en el puerto 3000
+app.listen(3000, () => {
+  console.log('Servidor abierto puerto 3000')
 });
 
 // view engine setup

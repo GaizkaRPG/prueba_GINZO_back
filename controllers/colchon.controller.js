@@ -5,31 +5,40 @@ var colchonCtrl = {};
 colchonCtrl.getColchones = async (req, res) => {
     var colchones = await Colchon.find();
     res.json(colchones);
-}
+};
 
-colchonCtrl.getColchon = (req, res) => {
+colchonCtrl.getColchon = async (req, res) => {
+    var colchon = await Colchon.findById(request.params);
+    res.json(colchon);
+};
+
+colchonCtrl.createColchon = async (req, res) => {
+    var colchon = new colchon(req.body);
+    await Colchon.save();
     res.json({
-        estatus: 'Colchon get'
+        status: "saved"
     })
-}
+};
 
-colchonCtrl.createColchon = (req, res) => {
+colchonCtrl.editColchon = async (req, res) => {
+    var { id } = req.params;
+    var colchon = {
+        name: req.body.name,
+        description: req.body.desc,
+        price: req.body.price,
+        img: req.body.img
+    }
+    await Colchon.findByIdAndUpdate(id, {$set: colchon});
     res.json({
-        estatus: 'Colchon create'
+        status: "updated"
     })
-}
+};
 
-colchonCtrl.editColchon = (req, res) => {
+colchonCtrl.deleteColchon = async (req, res) => {
+    Colchon.findByIdAndDelete(request.params);
     res.json({
-        estatus: 'Colchon edit'
+        status: "deleted"
     })
-}
-
-
-colchonCtrl.deleteColchon = (req, res) => {
-    res.json({
-        estatus: 'Colchon delete'
-    })
-}
+};
 
 module.exports = router;

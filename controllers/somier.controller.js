@@ -1,32 +1,43 @@
+var Somier = require('../models/somier');
+
 var somierCtrl = {};
 
-somierCtrl.getSomieres = (req, res) => {
+somierCtrl.getSomieres = async (req, res) => {
+    var somieres = await Somier.find();
+    res.json(somieres);
+}
+
+somierCtrl.getSomier = async (req, res) => {
+    var somier = await Somier.findById(request.params);
+    res.json(somier);
+}
+
+somierCtrl.createSomier = async (req, res) => {
+    var somier = new somier(req.body);
+    await Somier.save();
     res.json({
-        estatus: 'Somieres get'
+        status: "saved"
     })
 }
 
-somierCtrl.getSomier = (req, res) => {
+somierCtrl.editSomier = async (req, res) => {
+    var { id } = req.params;
+    var somier = {
+        name: req.body.name,
+        description: req.body.desc,
+        price: req.body.price,
+        img: req.body.img
+    }
+    await Somier.findByIdAndUpdate(id, {$set: somier});
     res.json({
-        estatus: 'Somier get'
+        status: "updated"
     })
 }
 
-somierCtrl.createSomier = (req, res) => {
+somierCtrl.deleteSomier = async (req, res) => {
+    Somier.findByIdAndDelete(request.params);
     res.json({
-        estatus: 'Somier create'
-    })
-}
-
-somierCtrl.editSomier = (req, res) => {
-    res.json({
-        estatus: 'Somier edit'
-    })
-}
-
-somierCtrl.deleteSomier = (req, res) => {
-    res.json({
-        estatus: 'Somier delete'
+        status: "deleted"
     })
 }
 

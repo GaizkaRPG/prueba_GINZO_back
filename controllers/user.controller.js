@@ -1,3 +1,3 @@
 var userCtrl = {};
 
-module.exports = router;
+module.exports = userCtrl;
