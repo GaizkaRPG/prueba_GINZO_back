@@ -13,8 +13,8 @@ somierCtrl.getSomier = async (req, res) => {
 }
 
 somierCtrl.createSomier = async (req, res) => {
-    var somier = new somier(req.body);
-    await Somier.save();
+    var somier = new Somier(req.body);
+    await somier.save();
     res.json({
         status: "saved"
     })
@@ -41,4 +41,4 @@ somierCtrl.deleteSomier = async (req, res) => {
     })
 }
 
-module.exports = router;
+module.exports = somierCtrl;

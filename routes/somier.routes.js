@@ -5,13 +5,13 @@ var somier = require('../controllers/somier.controller');
 
 /* GET somier listing. */
 router.get('/', somier.getSomieres);
-router.get('/', somier.getSomier);
+router.get('/:id', somier.getSomier);
 
 /* POST somier listing. */
-router.get('/:id', somier.createSomier);
+router.post('/', somier.createSomier);
 
 /* PUT somier listing. */
-router.get('/:id', somier.editSomier);
+router.put('/:id', somier.editSomier);
 
 /* DELETE somier listing. */
 router.delete('/:id', somier.deleteSomier);

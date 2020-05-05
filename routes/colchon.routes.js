@@ -5,15 +5,15 @@ var colchon = require('../controllers/colchon.controller');
 
 /* GET colchon listing. */
 router.get('/', colchon.getColchones);
-router.get('/', colchon.getColchon);
+router.get('/:id', colchon.getColchon);
 
 /* POST colchon listing. */
-router.get('/:id', colchon.createColchones);
+router.post('/', colchon.createColchon);
 
-/* PUT somier listing. */
-router.get('/:id', somier.editColchon);
+/* PUT colchon listing. */
+router.put('/:id', colchon.editColchon);
 
-/* DELETE somier listing. */
-router.delete('/:id', somier.deleteColchon);
+/* DELETE colchon listing. */
+router.delete('/:id', colchon.deleteColchon);
 
 module.exports = router;

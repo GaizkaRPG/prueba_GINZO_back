@@ -5,20 +5,20 @@ var colchonCtrl = {};
 colchonCtrl.getColchones = async (req, res) => {
     var colchones = await Colchon.find();
     res.json(colchones);
-};
+}
 
 colchonCtrl.getColchon = async (req, res) => {
     var colchon = await Colchon.findById(request.params);
     res.json(colchon);
-};
+}
 
 colchonCtrl.createColchon = async (req, res) => {
-    var colchon = new colchon(req.body);
-    await Colchon.save();
+    var colchon = new Colchon(req.body);
+    await colchon.save();
     res.json({
         status: "saved"
     })
-};
+}
 
 colchonCtrl.editColchon = async (req, res) => {
     var { id } = req.params;
@@ -32,13 +32,13 @@ colchonCtrl.editColchon = async (req, res) => {
     res.json({
         status: "updated"
     })
-};
+}
 
 colchonCtrl.deleteColchon = async (req, res) => {
     Colchon.findByIdAndDelete(request.params);
     res.json({
         status: "deleted"
     })
-};
+}
 
-module.exports = router;
+module.exports = colchonCtrl;

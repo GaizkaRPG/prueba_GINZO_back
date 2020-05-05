@@ -9,4 +9,4 @@ var ColchonSchema = new Schema({
     img: { type: String, required: false }
 })
 
-module.exports = mongoose.model('Colchon', UserSchema);
+module.exports = mongoose.model('Colchon', ColchonSchema);

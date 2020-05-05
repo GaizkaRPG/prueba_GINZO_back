@@ -9,4 +9,4 @@ var SomierSchema = new Schema({
     img: { type: String, required: false }
 })
 
-module.exports = mongoose.model('Somier', UserSchema);
+module.exports = mongoose.model('Somier', SomierSchema);
